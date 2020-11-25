@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="forNum1">#003C7C</color>
+    <color name="forNum2">#1B8AFF</color>
+    <color name="forNum3">#FFE925</color>
+    <color name="forNum4">#B35C10</color>
+    <color name="forNum5">#AA3C09</color>
+    <color name="forNum6">#CA0D0D</color>
+    <color name="forNum7">#5A1C91</color>
+    <color name="ghost">#00000000</color>
+    <color name="lightBlue">#3597FF</color>
+    <color name="notLightBlue">#0756AA</color>
+    <string name="app_name">Sapper</string>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+</resources>
