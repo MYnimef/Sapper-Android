@@ -260,12 +260,14 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         int tappedX = getX(tappedCell);
         int tappedY = getY(tappedCell);
 
-        if (!check[tappedY][tappedX] && !mark[tappedY][tappedX]) {
-            cells[tappedY][tappedX].setBackgroundColor(Color.RED);
-            mark[tappedY][tappedX] = true;
-        } else if (mark[tappedY][tappedX]) {
-            cells[tappedY][tappedX].setBackgroundColor(getResources().getColor(R.color.lightBlue));
-            mark[tappedY][tappedX] = false;
+        if(!start) {
+            if (!check[tappedY][tappedX] && !mark[tappedY][tappedX]) {
+                cells[tappedY][tappedX].setBackgroundColor(Color.RED);
+                mark[tappedY][tappedX] = true;
+            } else if (mark[tappedY][tappedX]) {
+                cells[tappedY][tappedX].setBackgroundColor(getResources().getColor(R.color.lightBlue));
+                mark[tappedY][tappedX] = false;
+            }
         }
         return true;
     }
@@ -286,7 +288,7 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
 
         if (!check[tappedY][tappedX] && !mark[tappedY][tappedX]) {
             openCell(tappedY, tappedX);
-        } else {
+        } else if (cells[tappedY][tappedX].getText() != "" && cells[tappedY][tappedX].getText() != "M") {
             openCellsAround(tappedY, tappedX);
         }
     }
@@ -322,14 +324,16 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (int i = 0; i < HEIGHT; i++) {
-                    for (int j = 0; j < WIDTH; j++) {
-                        check[i][j] = false;
-                        mark[i][j] = false;
-                        start = true;
-                        cells[i][j].setBackgroundColor(getResources().getColor(R.color.lightBlue));
-                        cells[i][j].setTextColor(getResources().getColor(R.color.ghost));
-                        cells[i][j].setText("");
+                if (!start) {
+                    for (int i = 0; i < HEIGHT; i++) {
+                        for (int j = 0; j < WIDTH; j++) {
+                            check[i][j] = false;
+                            mark[i][j] = false;
+                            start = true;
+                            cells[i][j].setBackgroundColor(getResources().getColor(R.color.lightBlue));
+                            cells[i][j].setTextColor(getResources().getColor(R.color.ghost));
+                            cells[i][j].setText("");
+                        }
                     }
                 }
             }
