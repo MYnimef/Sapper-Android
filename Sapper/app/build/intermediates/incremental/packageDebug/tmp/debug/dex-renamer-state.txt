@@ -1,4 +1,4 @@
-#Fri Nov 27 15:21:42 MSK 2020
+#Fri Nov 27 15:25:36 MSK 2020
 base.0=A\:\\Coding\\Android\\Git\\Sapper_Android\\Sapper\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
 path.1=classes.dex
 renamed.1=classes2.dex

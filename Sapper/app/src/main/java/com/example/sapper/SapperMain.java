@@ -33,6 +33,7 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         makeCells();
         restart();
         menu();
+        win();
     }
 
     void generate(float tappedX, float tappedY) {   //Generation of mines
@@ -348,5 +349,9 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
 
             }
         });
+    }
+
+    void win() {
+
     }
 }
