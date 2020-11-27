@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Sapper</string>
+    <string name="restart">Restart</string>
+    <string name="time">TextView</string>
+    <string name="menu">Menu</string>
 </resources>

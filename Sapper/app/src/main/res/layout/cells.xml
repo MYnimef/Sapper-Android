@@ -1,22 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-     >
+    android:background="@color/notLightBlue"
+    android:orientation="vertical" >
 
-    <HorizontalScrollView
-        android:id="@+id/HorizontalScrollView01"
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="@string/time" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="21dp" />
+
+    <ScrollView
+        android:id="@+id/ScrollView01"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="510dp" >
+        <HorizontalScrollView
+            android:id="@+id/HorizontalScrollView01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
-        <GridLayout
-            android:id="@+id/CellsLayout"
-            android:background="@color/notLightBlue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-        >
-        </GridLayout>
-    </HorizontalScrollView>
+            <GridLayout
+                android:id="@+id/CellsLayout"
+                android:background="@color/notLightBlue"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+            >
+            </GridLayout>
+        </HorizontalScrollView>
+    </ScrollView>
 
-</ScrollView>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <Button
+        android:id="@+id/restart_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/lightBlue"
+        android:text="@string/restart" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <Button
+        android:id="@+id/menu_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/lightBlue"
+        android:text="@string/menu" />
+
+</LinearLayout>

@@ -31,6 +31,8 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         setContentView(R.layout.cells);
 
         makeCells();
+        restart();
+        menu();
     }
 
     void generate(float tappedX, float tappedY) {   //Generation of mines
@@ -60,7 +62,7 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
             map[x[i] + 1][y[i] + 1] = true;
         }
         for (int i = 0; i < HEIGHT; i++) {
-            for (int j = 0 ; j < WIDTH; j++) {
+            for (int j = 0; j < WIDTH; j++) {
                 int mines = 0;
                 for (int k = -1; k <= 1; k++) {
                     for (int m = -1; m <= 1; m++) {
@@ -206,26 +208,21 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
 
     void openCell(int y, int x) {
         if (cells[y][x].getText() == "M") {
-            for (int i = 0; i < HEIGHT; i++)
-            {
-                for (int j = 0; j < WIDTH; j++)
-                {
+            for (int i = 0; i < HEIGHT; i++) {
+                for (int j = 0; j < WIDTH; j++) {
                     check[i][j] = true;
                     if (cells[i][j].getText() != "" && cells[i][j].getText() != "M") {
                         setColor(i, j);
-                    }
-                    else {
+                    } else {
                         cells[i][j].setBackgroundColor(Color.WHITE);
                         cells[i][j].setTextColor(Color.BLACK);
                     }
                 }
             }
             cells[y][x].setBackgroundColor(Color.RED);
-        }
-        else if(cells[y][x].getText() == "") {
+        } else if (cells[y][x].getText() == "") {
             openEmptyCell(y, x);
-        }
-        else {
+        } else {
             check[y][x] = true;
             setColor(y, x);
         }
@@ -243,7 +240,7 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
             }
         }
 
-        if (mines ==  Integer.parseInt((cells[y][x].getText()).toString())) {
+        if (mines == Integer.parseInt((cells[y][x].getText()).toString())) {
             for (int i = -1; i <= 1; i++) {
                 for (int j = -1; j <= 1; j++) {
                     if (y + i < HEIGHT && x + j < WIDTH && y + i >= 0 && x + j >= 0 && (i != 0 || j != 0)) {
@@ -266,8 +263,7 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         if (!check[tappedY][tappedX] && !mark[tappedY][tappedX]) {
             cells[tappedY][tappedX].setBackgroundColor(Color.RED);
             mark[tappedY][tappedX] = true;
-        }
-        else if (mark[tappedY][tappedX]) {
+        } else if (mark[tappedY][tappedX]) {
             cells[tappedY][tappedX].setBackgroundColor(getResources().getColor(R.color.lightBlue));
             mark[tappedY][tappedX] = false;
         }
@@ -290,8 +286,7 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
 
         if (!check[tappedY][tappedX] && !mark[tappedY][tappedX]) {
             openCell(tappedY, tappedX);
-        }
-        else {
+        } else {
             openCellsAround(tappedY, tappedX);
         }
     }
@@ -320,5 +315,34 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
                 cellsLayout.addView(cells[i][j]);
             }
         }
+    }
+
+    void restart() {
+        Button button = (Button) findViewById(R.id.restart_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (int i = 0; i < HEIGHT; i++) {
+                    for (int j = 0; j < WIDTH; j++) {
+                        check[i][j] = false;
+                        mark[i][j] = false;
+                        start = true;
+                        cells[i][j].setBackgroundColor(getResources().getColor(R.color.lightBlue));
+                        cells[i][j].setTextColor(getResources().getColor(R.color.ghost));
+                        cells[i][j].setText("");
+                    }
+                }
+            }
+        });
+    }
+
+    void menu() {
+        Button button = (Button) findViewById(R.id.menu_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }
