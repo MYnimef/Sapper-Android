@@ -11,6 +11,8 @@ import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.graphics.*;
+import android.widget.TextView;
+
 import java.util.Random;
 
 public class SapperMain extends Activity implements OnClickListener, OnLongClickListener {
@@ -33,7 +35,7 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         makeCells();
         restart();
         menu();
-        win();
+        //win();
     }
 
     void generate(float tappedX, float tappedY) {   //Generation of mines
@@ -346,12 +348,38 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (!start) {
+                    for (int i = 0; i < HEIGHT; i++) {
+                        for (int j = 0; j < WIDTH; j++) {
+                            check[i][j] = false;
+                            mark[i][j] = false;
+                            start = true;
+                            cells[i][j].setBackgroundColor(getResources().getColor(R.color.lightBlue));
+                            cells[i][j].setTextColor(getResources().getColor(R.color.ghost));
+                            cells[i][j].setText("");
+                        }
+                    }
+                }
+                WIDTH = 16;
+                HEIGHT = 16;
+                num_mines = 40;
+                makeCells();
             }
         });
     }
 
     void win() {
-
+        int sum = 0;
+        for (int i = 0; i < HEIGHT; i++) {
+            for (int j = 0; j < WIDTH; j++) {
+                if (cells[i][j].getText() != "M" && check[i][j]) {
+                    sum++;
+                }
+            }
+        }
+        if (sum == WIDTH * HEIGHT - num_mines) {
+            TextView time = findViewById(R.id.time);
+            time.setText("You won!");
+        }
     }
 }
