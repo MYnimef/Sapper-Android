@@ -6,54 +6,49 @@
                 {
                     "source": "A:\\Coding\\Android\\Git\\Sapper_Android\\Sapper\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
-                        "startLines": "6,15",
-                        "startColumns": "4,4",
-                        "startOffsets": "192,525",
-                        "endLines": "12,17",
-                        "endColumns": "12,12",
-                        "endOffsets": "484,682"
+                        "startLines": "-1,-1",
+                        "startColumns": "-1,-1",
+                        "startOffsets": "-1,-1"
                     },
                     "to": {
-                        "startLines": "13,20",
+                        "startLines": "14,17",
                         "startColumns": "4,4",
-                        "startOffsets": "526,817",
-                        "endLines": "19,22",
+                        "startOffsets": "568,651",
+                        "endLines": "16,19",
                         "endColumns": "12,12",
-                        "endOffsets": "812,972"
+                        "endOffsets": "646,718"
                     }
                 },
                 {
                     "source": "A:\\Coding\\Android\\Git\\Sapper_Android\\Sapper\\app\\src\\main\\res\\values\\colors.xml",
                     "from": {
-                        "startLines": "4,5,6,7,8,9,10,11,2,3",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "150,193,236,279,322,365,408,451,57,102",
-                        "endColumns": "41,41,41,41,41,41,41,41,43,46",
-                        "endOffsets": "187,230,273,316,359,402,445,488,96,144"
+                        "startLines": "-1,-1,-1,-1,-1,-1,-1,11,-1,-1,-1",
+                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,4,-1,-1,-1",
+                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,451,-1,-1,-1",
+                        "endColumns": "-1,-1,-1,-1,-1,-1,-1,41,-1,-1,-1",
+                        "endOffsets": "-1,-1,-1,-1,-1,-1,-1,488,-1,-1,-1"
                     },
                     "to": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,97,139,181,223,265,307,349,391,435",
-                        "endColumns": "41,41,41,41,41,41,41,41,43,46",
-                        "endOffsets": "92,134,176,218,260,302,344,386,430,477"
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,97,139,181,223,265,307,349,391,433,477",
+                        "endColumns": "41,41,41,41,41,41,41,41,41,43,46",
+                        "endOffsets": "92,134,176,218,260,302,344,386,428,472,519"
                     }
                 },
                 {
                     "source": "A:\\Coding\\Android\\Git\\Sapper_Android\\Sapper\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "57",
-                        "endColumns": "43",
-                        "endOffsets": "96"
+                        "startLines": "-1",
+                        "startColumns": "-1",
+                        "startOffsets": "-1"
                     },
                     "to": {
-                        "startLines": "12",
+                        "startLines": "13",
                         "startColumns": "4",
-                        "startOffsets": "482",
+                        "startOffsets": "524",
                         "endColumns": "43",
-                        "endOffsets": "521"
+                        "endOffsets": "563"
                     }
                 }
             ]

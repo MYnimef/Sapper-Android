@@ -5,9 +5,10 @@ int color forNum4 0x7f010003
 int color forNum5 0x7f010004
 int color forNum6 0x7f010005
 int color forNum7 0x7f010006
-int color ghost 0x7f010007
-int color lightBlue 0x7f010008
-int color notLightBlue 0x7f010009
+int color forNum8 0x7f010007
+int color ghost 0x7f010008
+int color lightBlue 0x7f010009
+int color notLightBlue 0x7f01000a
 int drawable ic_launcher 0x7f020000
 int id CellsLayout 0x7f030000
 int id HorizontalScrollView01 0x7f030001
