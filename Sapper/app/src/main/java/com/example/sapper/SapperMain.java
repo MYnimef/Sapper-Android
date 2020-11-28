@@ -37,17 +37,17 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         menu();
     }
 
-    void generate(float tappedX, float tappedY) {   //Generation of mines
+    void generate(float tappedY, float tappedX) {   //Generation of mines
         Random rand = new Random();
         int[] x = new int[numMines], y = new int[numMines];
 
         for (int i = 0; i < numMines; i++) {
             boolean again = false;
-            x[i] = rand.nextInt(HEIGHT);
-            y[i] = rand.nextInt(WIDTH);
+            y[i] = rand.nextInt(HEIGHT);
+            x[i] = rand.nextInt(WIDTH);
 
             for (int j = i - 1; j >= 0; j--) {
-                if ((x[i] == x[j] && y[i] == y[j])) {
+                if ((y[i] == y[j] && x[i] == x[j])) {
                     again = true;
                     break;
                 }
@@ -56,7 +56,7 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
             m:
             for (int j = -1; j <= 1; j++) {
                 for (int k = -1; k <= 1; k++) {
-                    if (x[i] == tappedX + j && y[i] == tappedY + k) {
+                    if (y[i] == tappedY + j && x[i] == tappedX + k) {
                         again = true;
                         break m;
                     }
@@ -70,7 +70,7 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
 
         boolean[][] map = new boolean[HEIGHT + 2][WIDTH + 2];
         for (int i = 0; i < numMines; i++) {
-            map[x[i] + 1][y[i] + 1] = true;
+            map[y[i] + 1][x[i] + 1] = true;
         }
         for (int i = 0; i < HEIGHT; i++) {
             for (int j = 0; j < WIDTH; j++) {
@@ -91,7 +91,7 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         }
 
         for (int i = 0; i < numMines; i++) {
-            cells[x[i]][y[i]].setText("M");
+            cells[y[i]][x[i]].setText("M");
         }
     }
 
@@ -100,28 +100,28 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         int num = Integer.parseInt(cells[i][j].getText().toString());
         switch (num) {
             case 1:
-                cells[i][j].setTextColor(getResources().getColor(R.color.forNum1));
+                cells[i][j].setTextColor(getColor(R.color.forNum1));
                 break;
             case 2:
-                cells[i][j].setTextColor(getResources().getColor(R.color.forNum2));
+                cells[i][j].setTextColor(getColor(R.color.forNum2));
                 break;
             case 3:
-                cells[i][j].setTextColor(getResources().getColor(R.color.forNum3));
+                cells[i][j].setTextColor(getColor(R.color.forNum3));
                 break;
             case 4:
-                cells[i][j].setTextColor(getResources().getColor(R.color.forNum4));
+                cells[i][j].setTextColor(getColor(R.color.forNum4));
                 break;
             case 5:
-                cells[i][j].setTextColor(getResources().getColor(R.color.forNum5));
+                cells[i][j].setTextColor(getColor(R.color.forNum5));
                 break;
             case 6:
-                cells[i][j].setTextColor(getResources().getColor(R.color.forNum6));
+                cells[i][j].setTextColor(getColor(R.color.forNum6));
                 break;
             case 7:
-                cells[i][j].setTextColor(getResources().getColor(R.color.forNum7));
+                cells[i][j].setTextColor(getColor(R.color.forNum7));
                 break;
             case 8:
-                cells[i][j].setTextColor(getResources().getColor(R.color.forNum8));
+                cells[i][j].setTextColor(getColor(R.color.forNum8));
                 break;
             default:
                 cells[i][j].setTextColor(Color.BLACK);
@@ -278,7 +278,7 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
                 check[tappedY][tappedX] = 2;
             }
             else if (check[tappedY][tappedX] == 2) {
-                cells[tappedY][tappedX].setBackgroundColor(getResources().getColor(R.color.lightBlue));
+                cells[tappedY][tappedX].setBackgroundColor(getColor(R.color.lightBlue));
                 check[tappedY][tappedX] = 0;
             }
         }
@@ -342,8 +342,8 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
                         for (int j = 0; j < WIDTH; j++) {
                             check[i][j] = 0;
                             start = true;
-                            cells[i][j].setBackgroundColor(getResources().getColor(R.color.lightBlue));
-                            cells[i][j].setTextColor(getResources().getColor(R.color.ghost));
+                            cells[i][j].setBackgroundColor(getColor(R.color.lightBlue));
+                            cells[i][j].setTextColor(getColor(R.color.ghost));
                             cells[i][j].setText("");
                             timeText.setText("");
                         }
@@ -363,8 +363,8 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
                         for (int j = 0; j < WIDTH; j++) {
                             check[i][j] = 0;
                             start = true;
-                            cells[i][j].setBackgroundColor(getResources().getColor(R.color.lightBlue));
-                            cells[i][j].setTextColor(getResources().getColor(R.color.ghost));
+                            cells[i][j].setBackgroundColor(getColor(R.color.lightBlue));
+                            cells[i][j].setTextColor(getColor(R.color.ghost));
                             cells[i][j].setText("");
                             timeText.setText("");
                         }
