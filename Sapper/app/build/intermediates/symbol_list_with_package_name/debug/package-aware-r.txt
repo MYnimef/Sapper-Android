@@ -627,9 +627,13 @@ id alertTitle
 id all
 id always
 id async
+id back_button
 id beginning
 id blocking
 id bottom
+id button3
+id button4
+id button5
 id buttonPanel
 id center
 id center_horizontal
@@ -639,6 +643,7 @@ id chronometer
 id clip_horizontal
 id clip_vertical
 id collapseActionView
+id confirm_button
 id content
 id contentPanel
 id custom
@@ -766,13 +771,14 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout cell
-layout cells
+layout menu_activity
 layout notification_action
 layout notification_action_tombstone
 layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout sapper_activity
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -817,6 +823,7 @@ string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string app_name
+string back_button
 string menu
 string restart
 string search_menu_title

@@ -9,7 +9,7 @@
 7-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml
 8
 9    <application
-9-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:6:5-22:19
+9-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:6:5-32:19
 10        android:allowBackup="true"
 10-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:7:9-35
 11        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -24,7 +24,7 @@
 17        android:theme="@style/AppTheme" >
 17-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:10:9-40
 18        <activity
-18-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:11:9-21:20
+18-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:11:9-23:20
 19            android:name="com.example.sapper.SapperMain"
 19-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:12:13-39
 20            android:screenOrientation="portrait"
@@ -32,16 +32,25 @@
 21            android:theme="@android:style/Theme.NoTitleBar" >
 21-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:13:13-60
 22            <intent-filter>
-22-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:16:13-20:29
+22-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:17:13-21:29
 23                <action android:name="android.intent.action.MAIN" />
-23-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:17:17-69
-23-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:17:25-66
+23-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:18:17-69
+23-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:18:25-66
 24
 25                <category android:name="android.intent.category.LAUNCHER" />
-25-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:19:17-77
-25-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:19:27-74
+25-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:20:17-77
+25-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:20:27-74
 26            </intent-filter>
 27        </activity>
-28    </application>
-29
-30</manifest>
+28        <activity
+28-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:25:9-30:20
+29            android:name="com.example.sapper.MenuActivity"
+29-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:26:13-41
+30            android:label="Second"
+30-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:28:13-35
+31            android:theme="@android:style/Theme.NoTitleBar" >
+31-->A:\Coding\Android\Git\Sapper_Android\Sapper\app\src\main\AndroidManifest.xml:27:13-60
+32        </activity>
+33    </application>
+34
+35</manifest>

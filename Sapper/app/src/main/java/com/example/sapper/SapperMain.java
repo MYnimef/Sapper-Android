@@ -2,6 +2,7 @@ package com.example.sapper;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -22,19 +23,17 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
     private int numMines = 10;
 
     private Button[][] cells;   //Array that contains what user see
-    short[][] check;    //0 - closed, 1 - opened, 2 - flag
-    boolean start = true;
-    TextView timeText;
-
+    private short[][] check;    //0 - closed, 1 - opened, 2 - flag
+    private boolean start = true;
+    private TextView timeText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cells);
+        setContentView(R.layout.sapper_activity);
 
         makeCells();
         restart();
-        menu();
     }
 
     void generate(float tappedY, float tappedX) {   //Generation of mines
@@ -353,31 +352,6 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         });
     }
 
-    void menu() {
-        Button menuButton = (Button) findViewById(R.id.menu_button);
-        menuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!start) {
-                    for (int i = 0; i < HEIGHT; i++) {
-                        for (int j = 0; j < WIDTH; j++) {
-                            check[i][j] = 0;
-                            start = true;
-                            cells[i][j].setBackgroundColor(getColor(R.color.lightBlue));
-                            cells[i][j].setTextColor(getColor(R.color.ghost));
-                            cells[i][j].setText("");
-                            timeText.setText("");
-                        }
-                    }
-                }
-                WIDTH = 16;
-                HEIGHT = 16;
-                numMines = 40;
-                makeCells();
-            }
-        });
-    }
-
     void result(boolean flag) {
         if (flag) {
             timeText.setText("You won!");
@@ -385,5 +359,13 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         else {
             timeText.setText("You lost!");
         }
+    }
+
+    public void Click(View view) {
+        //Создаем переход:
+        Intent intent=new Intent(SapperMain.this,MenuActivity.class);
+        intent.putExtra("start", start);
+        //Запускаем его при нажатии:
+        startActivity(intent);
     }
 }

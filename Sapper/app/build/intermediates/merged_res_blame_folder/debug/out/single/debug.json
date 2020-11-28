@@ -1,14 +1,18 @@
 [
     {
-        "merged": "A:\\Coding\\Android\\Git\\Sapper_Android\\Sapper\\app\\build\\intermediates\\res\\merged\\debug\\layout_cells.xml.flat",
-        "source": "A:\\Coding\\Android\\Git\\Sapper_Android\\Sapper\\app\\src\\main\\res\\layout\\cells.xml"
-    },
-    {
         "merged": "A:\\Coding\\Android\\Git\\Sapper_Android\\Sapper\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher.png.flat",
         "source": "A:\\Coding\\Android\\Git\\Sapper_Android\\Sapper\\app\\src\\main\\res\\drawable\\ic_launcher.png"
     },
     {
         "merged": "A:\\Coding\\Android\\Git\\Sapper_Android\\Sapper\\app\\build\\intermediates\\res\\merged\\debug\\layout_cell.xml.flat",
         "source": "A:\\Coding\\Android\\Git\\Sapper_Android\\Sapper\\app\\src\\main\\res\\layout\\cell.xml"
+    },
+    {
+        "merged": "A:\\Coding\\Android\\Git\\Sapper_Android\\Sapper\\app\\build\\intermediates\\res\\merged\\debug\\layout_sapper_activity.xml.flat",
+        "source": "A:\\Coding\\Android\\Git\\Sapper_Android\\Sapper\\app\\src\\main\\res\\layout\\sapper_activity.xml"
+    },
+    {
+        "merged": "A:\\Coding\\Android\\Git\\Sapper_Android\\Sapper\\app\\build\\intermediates\\res\\merged\\debug\\layout_menu_activity.xml.flat",
+        "source": "A:\\Coding\\Android\\Git\\Sapper_Android\\Sapper\\app\\src\\main\\res\\layout\\menu_activity.xml"
     }
 ]
