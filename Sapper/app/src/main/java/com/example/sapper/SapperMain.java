@@ -19,13 +19,13 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
 
     private int WIDTH = 9;
     private int HEIGHT = 9;
-    int num_mines = 10;
+    private int numMines = 10;
 
-    private Button[][] cells;
-    boolean[][] check;
-    boolean[][] mark;
-
+    private Button[][] cells;   //Array that contains what user see
+    short[][] check;    //0 - closed, 1 - opened, 2 - flag
     boolean start = true;
+    TextView timeText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,23 +35,31 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         makeCells();
         restart();
         menu();
-        //win();
     }
 
     void generate(float tappedX, float tappedY) {   //Generation of mines
         Random rand = new Random();
-        int[] x = new int[num_mines], y = new int[num_mines];
+        int[] x = new int[numMines], y = new int[numMines];
 
-        for (int i = 0; i < num_mines; i++) {
+        for (int i = 0; i < numMines; i++) {
             boolean again = false;
-
             x[i] = rand.nextInt(HEIGHT);
             y[i] = rand.nextInt(WIDTH);
 
             for (int j = i - 1; j >= 0; j--) {
-                if ((x[i] == x[j] && y[i] == y[j]) || (x[i] == tappedX && y[i] == tappedY)) {
+                if ((x[i] == x[j] && y[i] == y[j])) {
                     again = true;
                     break;
+                }
+            }
+
+            m:
+            for (int j = -1; j <= 1; j++) {
+                for (int k = -1; k <= 1; k++) {
+                    if (x[i] == tappedX + j && y[i] == tappedY + k) {
+                        again = true;
+                        break m;
+                    }
                 }
             }
 
@@ -61,7 +69,7 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         }
 
         boolean[][] map = new boolean[HEIGHT + 2][WIDTH + 2];
-        for (int i = 0; i < num_mines; i++) {
+        for (int i = 0; i < numMines; i++) {
             map[x[i] + 1][y[i] + 1] = true;
         }
         for (int i = 0; i < HEIGHT; i++) {
@@ -82,7 +90,7 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
             }
         }
 
-        for (int i = 0; i < num_mines; i++) {
+        for (int i = 0; i < numMines; i++) {
             cells[x[i]][y[i]].setText("M");
         }
     }
@@ -122,23 +130,23 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
 
     void openEmptyCell(int y, int x) {  //Opens all space around empty cell.
         cells[y][x].setBackgroundColor(Color.WHITE);
-        check[y][x] = true;
+        check[y][x] = 1;
 
         if (y < HEIGHT - 1) {
-            if (!check[y + 1][x] && cells[y + 1][x].getText() != "M") {
+            if (check[y + 1][x] == 0 && cells[y + 1][x].getText() != "M") {
                 if (cells[y + 1][x].getText() != "") {
                     setColor(y + 1, x);
-                    check[y + 1][x] = true;
+                    check[y + 1][x] = 1;
                 } else {
                     openEmptyCell(y + 1, x);
                 }
             }
         }
         if (y > 0) {
-            if (!check[y - 1][x] && cells[y - 1][x].getText() != "M") {
+            if (check[y - 1][x] == 0 && cells[y - 1][x].getText() != "M") {
                 if (cells[y - 1][x].getText() != "") {
                     setColor(y - 1, x);
-                    check[y - 1][x] = true;
+                    check[y - 1][x] = 1;
                 } else {
                     openEmptyCell(y - 1, x);
                 }
@@ -146,20 +154,20 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         }
 
         if (x < WIDTH - 1) {
-            if (!check[y][x + 1] && cells[y][x + 1].getText() != "M") {
+            if (check[y][x + 1] == 0 && cells[y][x + 1].getText() != "M") {
                 if (cells[y][x + 1].getText() != "") {
                     setColor(y, x + 1);
-                    check[y][x + 1] = true;
+                    check[y][x + 1] = 1;
                 } else {
                     openEmptyCell(y, x + 1);
                 }
             }
         }
         if (x > 0) {
-            if (!check[y][x - 1] && cells[y][x - 1].getText() != "M") {
+            if (check[y][x - 1] == 0 && cells[y][x - 1].getText() != "M") {
                 if (cells[y][x - 1].getText() != "") {
                     setColor(y, x - 1);
-                    check[y][x - 1] = true;
+                    check[y][x - 1] = 1;
                 } else {
                     openEmptyCell(y, x - 1);
                 }
@@ -167,20 +175,20 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         }
 
         if (y < HEIGHT - 1 && x < WIDTH - 1) {
-            if (!check[y + 1][x + 1] && cells[y + 1][x + 1].getText() != "M") {
+            if (check[y + 1][x + 1] == 0 && cells[y + 1][x + 1].getText() != "M") {
                 if (cells[y + 1][x + 1].getText() != "") {
                     setColor(y + 1, x + 1);
-                    check[y + 1][x + 1] = true;
+                    check[y + 1][x + 1] = 1;
                 } else {
                     openEmptyCell(y + 1, x + 1);
                 }
             }
         }
         if (y > 0 && x > 0) {
-            if (!check[y - 1][x - 1] && cells[y - 1][x - 1].getText() != "M") {
+            if (check[y - 1][x - 1] == 0 && cells[y - 1][x - 1].getText() != "M") {
                 if (cells[y - 1][x - 1].getText() != "") {
                     setColor(y - 1, x - 1);
-                    check[y - 1][x - 1] = true;
+                    check[y - 1][x - 1] = 1;
                 } else {
                     openEmptyCell(y - 1, x - 1);
                 }
@@ -188,20 +196,20 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         }
 
         if (y < HEIGHT - 1 && x > 0) {
-            if (!check[y + 1][x - 1] && cells[y + 1][x - 1].getText() != "M") {
+            if (check[y + 1][x - 1] == 0 && cells[y + 1][x - 1].getText() != "M") {
                 if (cells[y + 1][x - 1].getText() != "") {
                     setColor(y + 1, x - 1);
-                    check[y + 1][x - 1] = true;
+                    check[y + 1][x - 1] = 1;
                 } else {
                     openEmptyCell(y + 1, x - 1);
                 }
             }
         }
         if (y > 0 && x < WIDTH - 1) {
-            if (!check[y - 1][x + 1] && cells[y - 1][x + 1].getText() != "M") {
+            if (check[y - 1][x + 1] == 0 && cells[y - 1][x + 1].getText() != "M") {
                 if (cells[y - 1][x + 1].getText() != "") {
                     setColor(y - 1, x + 1);
-                    check[y - 1][x + 1] = true;
+                    check[y - 1][x + 1] = 1;
                 } else {
                     openEmptyCell(y - 1, x + 1);
                 }
@@ -213,20 +221,21 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         if (cells[y][x].getText() == "M") {
             for (int i = 0; i < HEIGHT; i++) {
                 for (int j = 0; j < WIDTH; j++) {
-                    check[i][j] = true;
+                    check[i][j] = 1;
                     if (cells[i][j].getText() != "" && cells[i][j].getText() != "M") {
                         setColor(i, j);
                     } else {
                         cells[i][j].setBackgroundColor(Color.WHITE);
                         cells[i][j].setTextColor(Color.BLACK);
                     }
+                    result(false);
                 }
             }
             cells[y][x].setBackgroundColor(Color.RED);
         } else if (cells[y][x].getText() == "") {
             openEmptyCell(y, x);
         } else {
-            check[y][x] = true;
+            check[y][x] = 1;
             setColor(y, x);
         }
     }
@@ -236,7 +245,7 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
                 if (y + i < HEIGHT && x + j < WIDTH && y + i >= 0 && x + j >= 0 && (i != 0 || j != 0)) {
-                    if (mark[y + i][x + j]) {
+                    if (check[y + i][x + j] == 2) {
                         mines++;
                     }
                 }
@@ -247,7 +256,7 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
             for (int i = -1; i <= 1; i++) {
                 for (int j = -1; j <= 1; j++) {
                     if (y + i < HEIGHT && x + j < WIDTH && y + i >= 0 && x + j >= 0 && (i != 0 || j != 0)) {
-                        if (!check[y + i][x + j] && !mark[y + i][x + j]) {
+                        if (check[y + i][x + j] == 0) {
                             openCell(y + i, x + j);
                         }
                     }
@@ -264,12 +273,13 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         int tappedY = getY(tappedCell);
 
         if(!start) {
-            if (!check[tappedY][tappedX] && !mark[tappedY][tappedX]) {
+            if (check[tappedY][tappedX] == 0) {
                 cells[tappedY][tappedX].setBackgroundColor(Color.RED);
-                mark[tappedY][tappedX] = true;
-            } else if (mark[tappedY][tappedX]) {
+                check[tappedY][tappedX] = 2;
+            }
+            else if (check[tappedY][tappedX] == 2) {
                 cells[tappedY][tappedX].setBackgroundColor(getResources().getColor(R.color.lightBlue));
-                mark[tappedY][tappedX] = false;
+                check[tappedY][tappedX] = 0;
             }
         }
         return true;
@@ -283,13 +293,13 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         int tappedY = getY(tappedCell);
 
         if (start) {
-            check = new boolean[HEIGHT][WIDTH];
-            mark = new boolean[HEIGHT][WIDTH];
+            check = new short[HEIGHT][WIDTH];
             generate(tappedY, tappedX);
             start = false;
+            timeText = findViewById(R.id.time);
         }
 
-        if (!check[tappedY][tappedX] && !mark[tappedY][tappedX]) {
+        if (check[tappedY][tappedX] == 0) {
             openCell(tappedY, tappedX);
         } else if (cells[tappedY][tappedX].getText() != "" && cells[tappedY][tappedX].getText() != "M") {
             openCellsAround(tappedY, tappedX);
@@ -323,19 +333,19 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
     }
 
     void restart() {
-        Button button = (Button) findViewById(R.id.restart_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button restartButton = (Button) findViewById(R.id.restart_button);
+        restartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!start) {
                     for (int i = 0; i < HEIGHT; i++) {
                         for (int j = 0; j < WIDTH; j++) {
-                            check[i][j] = false;
-                            mark[i][j] = false;
+                            check[i][j] = 0;
                             start = true;
                             cells[i][j].setBackgroundColor(getResources().getColor(R.color.lightBlue));
                             cells[i][j].setTextColor(getResources().getColor(R.color.ghost));
                             cells[i][j].setText("");
+                            timeText.setText("");
                         }
                     }
                 }
@@ -344,42 +354,36 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
     }
 
     void menu() {
-        Button button = (Button) findViewById(R.id.menu_button);
-        button.setOnClickListener(new View.OnClickListener() {
+        Button menuButton = (Button) findViewById(R.id.menu_button);
+        menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!start) {
                     for (int i = 0; i < HEIGHT; i++) {
                         for (int j = 0; j < WIDTH; j++) {
-                            check[i][j] = false;
-                            mark[i][j] = false;
+                            check[i][j] = 0;
                             start = true;
                             cells[i][j].setBackgroundColor(getResources().getColor(R.color.lightBlue));
                             cells[i][j].setTextColor(getResources().getColor(R.color.ghost));
                             cells[i][j].setText("");
+                            timeText.setText("");
                         }
                     }
                 }
                 WIDTH = 16;
                 HEIGHT = 16;
-                num_mines = 40;
+                numMines = 40;
                 makeCells();
             }
         });
     }
 
-    void win() {
-        int sum = 0;
-        for (int i = 0; i < HEIGHT; i++) {
-            for (int j = 0; j < WIDTH; j++) {
-                if (cells[i][j].getText() != "M" && check[i][j]) {
-                    sum++;
-                }
-            }
+    void result(boolean flag) {
+        if (flag) {
+            timeText.setText("You won!");
         }
-        if (sum == WIDTH * HEIGHT - num_mines) {
-            TextView time = findViewById(R.id.time);
-            time.setText("You won!");
+        else {
+            timeText.setText("You lost!");
         }
     }
 }
