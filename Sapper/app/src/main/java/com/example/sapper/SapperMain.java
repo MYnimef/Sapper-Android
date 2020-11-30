@@ -23,7 +23,7 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
     private int numMines = 10;
 
     private Button[][] cells;   //Array that contains what user see
-    private short[][] check;    //0 - closed, 1 - opened, 2 - flag
+    private byte[][] check;    //0 - closed, 1 - opened, 2 - flag
     private boolean start = true;
     private TextView timeText;
 
@@ -33,7 +33,7 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         setContentView(R.layout.sapper_activity);
 
         makeCells();
-        restart();
+        //restart();
     }
 
     void generate(float tappedY, float tappedX) {   //Generation of mines
@@ -292,7 +292,7 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         int tappedY = getY(tappedCell);
 
         if (start) {
-            check = new short[HEIGHT][WIDTH];
+            check = new byte[HEIGHT][WIDTH];
             generate(tappedY, tappedX);
             start = false;
             timeText = findViewById(R.id.time);
@@ -331,25 +331,19 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         }
     }
 
-    void restart() {
-        Button restartButton = (Button) findViewById(R.id.restart_button);
-        restartButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (!start) {
-                    for (int i = 0; i < HEIGHT; i++) {
-                        for (int j = 0; j < WIDTH; j++) {
-                            check[i][j] = 0;
-                            start = true;
-                            cells[i][j].setBackgroundColor(getColor(R.color.lightBlue));
-                            cells[i][j].setTextColor(getColor(R.color.ghost));
-                            cells[i][j].setText("");
-                            timeText.setText("");
-                        }
-                    }
+    public void restartClick(View view) {
+        if (!start) {
+            for (int i = 0; i < HEIGHT; i++) {
+                for (int j = 0; j < WIDTH; j++) {
+                    check[i][j] = 0;
+                    start = true;
+                    cells[i][j].setBackgroundColor(getColor(R.color.lightBlue));
+                    cells[i][j].setTextColor(getColor(R.color.ghost));
+                    cells[i][j].setText("");
+                    timeText.setText("");
                 }
             }
-        });
+        }
     }
 
     void result(boolean flag) {
@@ -361,9 +355,9 @@ public class SapperMain extends Activity implements OnClickListener, OnLongClick
         }
     }
 
-    public void Click(View view) {
+    public void menuClick(View view) {
         //Создаем переход:
-        Intent intent=new Intent(SapperMain.this,MenuActivity.class);
+        Intent intent = new Intent(SapperMain.this,MenuActivity.class);
         intent.putExtra("start", start);
         //Запускаем его при нажатии:
         startActivity(intent);

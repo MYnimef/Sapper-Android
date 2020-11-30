@@ -53,7 +53,8 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:background="@color/lightBlue"
-        android:text="@string/restart" />
+        android:text="@string/restart"
+        android:onClick="restartClick" />
 
     <Button
         android:id="@+id/menu_button"
@@ -67,6 +68,6 @@
         android:layout_marginBottom="20dp"
         android:background="@color/lightBlue"
         android:text="@string/menu"
-        android:onClick="Click" />
+        android:onClick="menuClick" />
 
 </RelativeLayout>
