@@ -4,8 +4,8 @@
     "type": "PROCESSED_RES",
     "kind": "Directory"
   },
-  "applicationId": "ru.samsung.itschool.book.cells",
-  "variantName": "processDebugResources",
+  "applicationId": "com.mynimef.sapper",
+  "variantName": "debug",
   "elements": [
     {
       "type": "SINGLE",

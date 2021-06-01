@@ -5,6 +5,6 @@ package com.example.sapper;
 
 public final class BuildConfig {
   public static final boolean DEBUG = Boolean.parseBoolean("true");
-  public static final String APPLICATION_ID = "ru.samsung.itschool.book.cells";
+  public static final String APPLICATION_ID = "com.mynimef.sapper";
   public static final String BUILD_TYPE = "debug";
 }

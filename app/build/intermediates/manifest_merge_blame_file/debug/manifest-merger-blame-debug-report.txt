@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="ru.samsung.itschool.book.cells" >
+3    package="com.mynimef.sapper" >
 4
 5    <uses-sdk
 6        android:minSdkVersion="24"
@@ -13,7 +13,7 @@
 10        android:allowBackup="true"
 10-->A:\Coding\Android\Git\Sapper_Android\app\src\main\AndroidManifest.xml:6:9-35
 11        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-11-->[androidx.core:core:1.0.1] C:\Users\Иван\.gradle\caches\transforms-2\files-2.1\3d8f3aa9beec41485ddddd4268fa3ba8\core-1.0.1\AndroidManifest.xml:22:18-86
+11-->[androidx.core:core:1.5.0] C:\Users\Иван\.gradle\caches\transforms-2\files-2.1\07adfc08fe16d3453ab9291511ec05fe\core-1.5.0\AndroidManifest.xml:24:18-86
 12        android:debuggable="true"
 13        android:extractNativeLibs="false"
 14        android:icon="@drawable/ic_launcher"

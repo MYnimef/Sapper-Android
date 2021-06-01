@@ -1,6 +1,6 @@
+com/example/sapper/BuildConfig.java
+ com.example.sapper.BuildConfig
 com/example/sapper/SapperMain.java
  com.example.sapper.SapperMain
 com/example/sapper/MenuActivity.java
  com.example.sapper.MenuActivity
-com/example/sapper/BuildConfig.java
- com.example.sapper.BuildConfig

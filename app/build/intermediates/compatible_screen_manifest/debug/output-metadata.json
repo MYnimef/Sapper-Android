@@ -4,7 +4,7 @@
     "type": "COMPATIBLE_SCREEN_MANIFEST",
     "kind": "Directory"
   },
-  "applicationId": "ru.samsung.itschool.book.cells",
+  "applicationId": "com.mynimef.sapper",
   "variantName": "debug",
   "elements": []
 }
